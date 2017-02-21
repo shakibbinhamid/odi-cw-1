@@ -27,3 +27,7 @@ p {
 .downloads {
     padding-top: 3%;
 }
+
+.list-group-item {
+    display: list-item;
+}

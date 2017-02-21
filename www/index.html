@@ -87,80 +87,80 @@
             </div>
             <div class="col-lg-12">
 
-                <header>
-                    <h2>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-size: 1.2em">
                         Errors in Dataset
-                    </h2>
-                </header>
+                    </div>
 
-                <ol style="padding: 1%">
-                    <li>
-                        Deleted the disclaimer text at the top.
-                    </li>
-                    <li>
-                        Department of Commerce rows were shifted to the left.
-                    </li>
-                    <li>
-                        Removed the lines containing 'Total' (26 lines) and blank lines (17 lines) following them.
-                    </li>
-                    <li>
-                        7 rows had the Project ID split over two columns, so they were fixed. Some such IDs include : 285833, 286250 etc.
-                    </li>
-                    <li>
-                        2 rows had Agency ID for Department of Agriculture as 6, instead of 5.
-                    </li>
-                    <li>
-                        1 row had 'Entered in Error' for the Name and Description of the project.
-                    </li>
-                    <li>
-                        Removed 17 rows that did not have cost and project date data.
-                    </li>
-                    <li>
-                        Removed 4 duplicate rows, detected by bash 'uniq -v'
-                    </li>
-                    <li>
-                        Some rows' Project ID had commas (,) in them, found via Openrefine's text facet.
-                    </li>
-                    <li>
-                        Department names were not consistent. For example : Department of Agriculture vs DoA, Defense vs Defence etc. Found via text facet.
-                    </li>
-                    <li>
-                        Rows with DoE as Agency Name had different Agency Code. So, Agency Code was used to identify them. 2 rows were Department of Education and 2 rows were Department of Energy.
-                    </li>
-                    <li>
-                        Investment titles that were similar were merged. For example: ",and" vs "and" in some description based on clustering using Key-col Clustering and Key-col Fingerprint etc.
-                    </li>
-                    <li>
-                        Some rows' Lifecycle Cost has "($M)", detected by numeric facet and fixed by cell transform with "value.split(" ")[0]"
-                    </li>
-                    <li>
-                        Some rows' Dates were not in a consistent format. Cells were transformed to Date-Time.
-                    </li>
-                    <li>
-                        Some rows had spelling errors e.g. Department of Agraculture.
-                    </li>
-                    <li>
-                        Deleted Update Date and Time since they were combined to one column "Updated DateTime"
-                    </li>
-                </ol>
+                    <ol class="list-group">
+                        <li class="list-group-item">
+                            Deleted the disclaimer text at the top.
+                        </li>
+                        <li class="list-group-item">
+                            Department of Commerce rows were shifted to the left.
+                        </li>
+                        <li class="list-group-item">
+                            Removed the lines containing 'Total' (26 lines) and blank lines (17 lines) following them.
+                        </li>
+                        <li class="list-group-item">
+                            7 rows had the Project ID split over two columns, so they were fixed. Some such IDs include : 285833, 286250 etc.
+                        </li>
+                        <li class="list-group-item">
+                            2 rows had Agency ID for Department of Agriculture as 6, instead of 5.
+                        </li>
+                        <li class="list-group-item">
+                            1 row had 'Entered in Error' for the Name and Description of the project.
+                        </li>
+                        <li class="list-group-item">
+                            Removed 17 rows that did not have cost and project date data.
+                        </li>
+                        <li class="list-group-item">
+                            Removed 4 duplicate rows, detected by bash 'uniq -v'
+                        </li>
+                        <li class="list-group-item">
+                            Some rows' Project ID had commas (,) in them, found via Openrefine's text facet.
+                        </li>
+                        <li class="list-group-item">
+                            Department names were not consistent. For example : Department of Agriculture vs DoA, Defense vs Defence etc. Found via text facet.
+                        </li>
+                        <li class="list-group-item">
+                            Rows with DoE as Agency Name had different Agency Code. So, Agency Code was used to identify them. 2 rows were Department of Education and 2 rows were Department of Energy.
+                        </li>
+                        <li class="list-group-item">
+                            Investment titles that were similar were merged. For example: ",and" vs "and" in some description based on clustering using Key-col Clustering and Key-col Fingerprint etc.
+                        </li>
+                        <li class="list-group-item">
+                            Some rows' Lifecycle Cost has "($M)", detected by numeric facet and fixed by cell transform with "value.split(" ")[0]"
+                        </li>
+                        <li class="list-group-item">
+                            Some rows' Dates were not in a consistent format. Cells were transformed to Date-Time.
+                        </li>
+                        <li class="list-group-item">
+                            Some rows had spelling errors e.g. Department of Agraculture.
+                        </li>
+                        <li class="list-group-item">
+                            Deleted Update Date and Time since they were combined to one column "Updated DateTime"
+                        </li>
+                    </ol>
+                </div>
 
-                <header>
-                    <h2>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="font-size: 1.2em">
                         Modification to Dataset
-                    </h2>
-                </header>
+                    </div>
 
-                <ol style="padding: 1%">
-                    <li>
-                        Unique Project IDs were not unique across the dataset and were thus removed, as Project IDs are unique.
-                    </li>
-                    <li>
-                        Agency Project IDs were removed since about 30% of the rows did not contain the value.
-                    </li>
-                    <li>
-                        Whitespace was trimmed in all cells.
-                    </li>
-                </ol>
+                    <ol class="list-group">
+                        <li class="list-group-item">
+                            Unique Project IDs were not unique across the dataset and were thus removed, as Project IDs are unique.
+                        </li>
+                        <li class="list-group-item">
+                            Agency Project IDs were removed since about 30% of the rows did not contain the value.
+                        </li>
+                        <li class="list-group-item">
+                            Whitespace was trimmed in all cells.
+                        </li>
+                    </ol>
+                </div>
             </div>
         </div>
     </article>

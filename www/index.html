@@ -15,37 +15,136 @@
 
     <script src="js/main.js"></script>
 </head>
-<body>
 
-<div id="top-navbar"></div>
+<body class="larger-font">
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span> <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="index.html" class="navbar-brand">COMP6214</a>
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">COMP6214</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="visualisation-1.html">Visualisation 1</a>
+                    </li>
+                    <li>
+                        <a href="visualisation-2.html">Visualisation 2</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
+</div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="visualisation-1.html">Visualisation 1</a>
-                </li>
-                <li>
-                    <a href="visualisation-2.html">Visualisation 2</a>
-                </li>
-            </ul>
+<br/>
+
+<div style="padding: 1%">
+    <article>
+        <header>
+            <h1>Data Cleaning</h1>
+        </header>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <p>
+                    The original dataset is found <a href="data/Projects_CW1_MessedUp.csv">here</a>. The dataset has been heavily modified by lecturers at University of Southampton for coursework purposes.
+                    You should <em style="font-size: 1.25em">not</em> use the data for real world application. The corrected dataset can be found <a href="data/odi-cw-1.csv">here</a>.
+                </p>
+
+                <p>
+                    The data was cleaned using <a href="http://openrefine.org/">Openrefine</a>, MS Excel and Bash tools like sed, cut etc.
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <ul class="downloads">
+                    <li>
+                        <a href="data/Projects_CW1_MessedUp.csv">Original Messy Dataset</a>
+                    </li>
+                    <li>
+                        <a href="data/odi-cw-1.csv">Cleaned Dataset</a>
+                    </li>
+                    <li>
+                        <a href="data/odi-cw-1.openrefine.tar.gz">Openrefine Project</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-12">
+                Below are the modifications made to the original CSV file due to errors in the dataset -
+
+                <ol style="padding: 1%">
+                    <li>
+                        Deleted the disclaimer text at the top.
+                    </li>
+                    <li>
+                        Department of Commerce rows were shifted to the left.
+                    </li>
+                    <li>
+                        Removed the lines containing 'Total' (26 lines) and blank lines (17 lines) following them.
+                    </li>
+                    <li>
+                        7 rows had the Project ID split over two columns, so they were fixed. Some such IDs include : 285833, 286250 etc.
+                    </li>
+                    <li>
+                        2 rows had Agency ID for Department of Agriculture as 6, instead of 5.
+                    </li>
+                    <li>
+                        1 row had 'Entered in Error' for the Name and Description of the project.
+                    </li>
+                    <li>
+                        Removed 17 rows that did not have cost and project date data.
+                    </li>
+                    <li>
+                        Removed 4 duplicate rows, detected by bash 'uniq -v'
+                    </li>
+                    <li>
+                        Some rows' Project ID had commas (,) in them, found via Openrefine's text facet.
+                    </li>
+                    <li>
+                        Department names were not consistent. For example : Department of Agriculture vs DoA, Defense vs Defence etc. Found via text facet.
+                    </li>
+                    <li>
+                        Rows with DoE as Agency Name had different Agency Code. So, Agency Code was used to identify them. 2 rows were Department of Education and 2 rows were Department of Energy.
+                    </li>
+                    <li>
+                        Investment titles that were similar were merged. For example: ",and" vs "and" in some description based on clustering using Key-col Clustering and Key-col Fingerprint etc.
+                    </li>
+                    <li>
+                        Some rows' Lifecycle Cost has "($M)", detected by numeric facet and fixed by cell transform with "value.split(" ")[0]"
+                    </li>
+                    <li>
+                        Some rows' Dates were not in a consistent format. Cells were transformed to Date-Time.
+                    </li>
+                    <li>
+                        Some rows had spelling errors e.g. Department of Agraculture.
+                    </li>
+                    <li>
+                        Deleted Update Date and Time since they were combined to one column "Updated DateTime"
+                    </li>
+                    <li>
+                        Unique Project IDs were not unique across the dataset and were thus removed, as Project IDs are unique.
+                    </li>
+                    <li>
+                        Agency Project IDs were removed since about 30% of the rows did not contain the value.
+                    </li>
+                    <li>
+                        Whitespace was trimmed in all cells.
+                    </li>
+                </ol>
+            </div>
         </div>
-    </div>
-</nav>
-what
+    </article>
+</div>
 
 <script>
     d3.csv("data/projects.csv")

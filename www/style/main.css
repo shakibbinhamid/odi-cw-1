@@ -1,9 +1,30 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    width: 100%;
+    position: inherit;
+    left: 0;
+    right: 0;
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        width: 50%;
+        position: absolute;
+        left: 25%;
+        right: 25%;
+    }
 }
 
 p {
     font-family: 'Open Sans', sans-serif;
 }
 
+.larger-font {
+    font-size: 2em;
+}
+
+.downloads {
+    padding: 1%;
+    float: right;
+}

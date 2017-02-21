@@ -51,12 +51,11 @@
 
 <div style="padding: 1%">
     <article>
-        <header>
-            <h1>Data Cleaning</h1>
-        </header>
-
         <div class="row">
             <div class="col-lg-8">
+                <header>
+                    <h1>Data Cleaning</h1>
+                </header>
                 <p>
                     The original dataset is found <a href="data/Projects_CW1_MessedUp.csv">here</a>. The dataset has been heavily modified by lecturers at University of Southampton for coursework purposes.
                     You should <em style="font-size: 1.25em">not</em> use the data for real world application. The corrected dataset can be found <a href="data/odi-cw-1.csv">here</a>.
@@ -66,21 +65,33 @@
                     The data was cleaned using <a href="http://openrefine.org/">Openrefine</a>, MS Excel and Bash tools like sed, cut etc.
                 </p>
             </div>
-            <div class="col-lg-4">
-                <ul class="downloads">
-                    <li>
-                        <a href="data/Projects_CW1_MessedUp.csv">Original Messy Dataset</a>
-                    </li>
-                    <li>
-                        <a href="data/odi-cw-1.csv">Cleaned Dataset</a>
-                    </li>
-                    <li>
-                        <a href="data/odi-cw-1.openrefine.tar.gz">Openrefine Project</a>
-                    </li>
-                </ul>
+            <div class="col-lg-4 downloads">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Downloads</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>
+                                <a href="data/Projects_CW1_MessedUp.csv">Original Messy Dataset</a>
+                            </li>
+                            <li>
+                                <a href="data/odi-cw-1.csv">Cleaned Dataset</a>
+                            </li>
+                            <li>
+                                <a href="data/odi-cw-1.openrefine.tar.gz">Openrefine Project</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-12">
-                Below are the modifications made to the original CSV file due to errors in the dataset -
+
+                <header>
+                    <h2>
+                        Errors in Dataset
+                    </h2>
+                </header>
 
                 <ol style="padding: 1%">
                     <li>
@@ -131,6 +142,15 @@
                     <li>
                         Deleted Update Date and Time since they were combined to one column "Updated DateTime"
                     </li>
+                </ol>
+
+                <header>
+                    <h2>
+                        Modification to Dataset
+                    </h2>
+                </header>
+
+                <ol style="padding: 1%">
                     <li>
                         Unique Project IDs were not unique across the dataset and were thus removed, as Project IDs are unique.
                     </li>

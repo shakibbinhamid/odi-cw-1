@@ -27,9 +27,9 @@ function main(o, data) {
         margin = opts.margin;
         theight = 36 + 16;
 
-    $('#chart').width(opts.width).height(opts.height);
-    var width = opts.width - margin.left - margin.right,
-        height = opts.height - margin.top - margin.bottom - theight,
+    // $('#chart').width(opts.width).height(opts.height);
+    var width = $('#chart').width() - margin.left - margin.right,
+        height = 9/16*$('#chart').width() - margin.top - margin.bottom - theight,
         transitioning;
 
     var color = d3.scale.category20c();
@@ -235,7 +235,12 @@ function main(o, data) {
             ? name(d.parent) + " > " + d.key + " (" + formatNumber(d.projected_cost) + ")"
             : d.key + " (" + formatNumber(d.projected_cost) + ")";
     }
+
+
+
 }
+
+var nested;
 
 d3.csv("data/odi-cw-1.csv")
     .row(function (d) {
@@ -266,10 +271,15 @@ d3.csv("data/odi-cw-1.csv")
         }
     })
     .get(function (err, data) {
-        var nested = d3.nest()
+        nested = d3.nest()
             .key(function (d) { return d.agency_name; })
             .key(function (d) { return d.investment_title; })
             .entries(data);
 
         main({title: "US Gov Spending"}, {key: "US", values: nested});
     });
+
+window.addEventListener("resize", function () {
+    $("#chart").empty();
+    main({title: "US Gov Spending"}, {key: "US", values: nested});
+});

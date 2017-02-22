@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8f0378b-0a0b-4fa9-8ab8-e7bf234f3c2d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/data/odi-cw-1.csv" afterPath="$PROJECT_DIR$/www/data/odi-cw-1.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/vis-1.js" afterPath="$PROJECT_DIR$/www/js/vis-1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/style/main.css" afterPath="$PROJECT_DIR$/www/style/main.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vis-1.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="vis-1.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/vis-1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="617">
-              <caret line="258" column="59" lean-forward="true" selection-start-line="258" selection-start-column="59" selection-end-line="258" selection-end-column="59" />
+            <state relative-caret-position="353">
+              <caret line="173" column="23" lean-forward="false" selection-start-line="173" selection-start-column="23" selection-end-line="173" selection-end-column="23" />
               <folding>
                 <element signature="e#0#49#0" expanded="false" />
               </folding>
@@ -41,11 +40,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="odi-cw-1.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/data/odi-cw-1.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="76" lean-forward="true" selection-start-line="0" selection-start-column="76" selection-end-line="0" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/style/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="57" column="17" lean-forward="true" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+            <state relative-caret-position="338">
+              <caret line="70" column="17" lean-forward="true" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -68,6 +77,9 @@
       <find>name</find>
       <find>US Gov Sp</find>
       <find>title</find>
+      <find>JTRS - Gr</find>
+      <find>investment_title</find>
+      <find>projected_cost</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -96,8 +108,8 @@
         <option value="$PROJECT_DIR$/www/fix.sh" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/visualisation-1.html" />
-        <option value="$PROJECT_DIR$/www/js/vis-1.js" />
         <option value="$PROJECT_DIR$/www/style/main.css" />
+        <option value="$PROJECT_DIR$/www/js/vis-1.js" />
       </list>
     </option>
   </component>
@@ -644,12 +656,12 @@
       <workItem from="1487673878323" duration="3477000" />
       <workItem from="1487678563382" duration="3482000" />
       <workItem from="1487686010936" duration="13110000" />
-      <workItem from="1487761608262" duration="11896000" />
+      <workItem from="1487761608262" duration="13280000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31965000" />
+    <option name="totallyTimeSpent" value="33349000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1598" height="1416" extended-state="0" />
@@ -906,29 +918,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/style/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="70" column="17" lean-forward="true" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/data/odi-cw-1.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="323" lean-forward="false" selection-start-line="4" selection-start-column="323" selection-end-line="4" selection-end-column="323" />
+        <state relative-caret-position="0">
+          <caret line="0" column="76" lean-forward="true" selection-start-line="0" selection-start-column="76" selection-end-line="0" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/vis-1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="258" column="59" lean-forward="true" selection-start-line="258" selection-start-column="59" selection-end-line="258" selection-end-column="59" />
+        <state relative-caret-position="353">
+          <caret line="173" column="23" lean-forward="false" selection-start-line="173" selection-start-column="23" selection-end-line="173" selection-end-column="23" />
           <folding>
             <element signature="e#0#49#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/style/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="57" column="17" lean-forward="true" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>

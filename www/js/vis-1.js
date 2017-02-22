@@ -16,7 +16,7 @@ var defaults = {
     format: ".2f",
     title: "",
     width: 1000,
-    height: 500
+    height: 800
 };
 
 function main(o, data) {

@@ -13,9 +13,9 @@ window.addEventListener('message', function(e) {
 var defaults = {
     margin: {top: 24, right: 0, bottom: 0, left: 0},
     rootname: "TOP",
-    format: ",d",
+    format: ".2f",
     title: "",
-    width: 960,
+    width: 1000,
     height: 500
 };
 
@@ -242,6 +242,7 @@ function main(o, data) {
     }
 
     function name(d) {
+        console.log(d);
         return d.parent
             ? name(d.parent) + " / " + d.key + " (" + formatNumber(d.projected_cost) + ")"
             : d.key + " (" + formatNumber(d.projected_cost) + ")";

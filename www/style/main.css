@@ -1,20 +1,18 @@
 
-body {
-    font-family: 'Roboto', sans-serif;
-    width: 100%;
-    position: inherit;
-    left: 0;
-    right: 0;
-}
+/*.error-page {*/
+    /*font-family: 'Roboto', sans-serif;*/
+    /*width: 100%;*/
+    /*position: inherit;*/
+    /*left: 0;*/
+/*}*/
 
-@media only screen and (min-width: 768px) {
-    body {
-        width: 50%;
-        position: absolute;
-        left: 25%;
-        right: 25%;
-    }
-}
+/*@media only screen and (min-width: 768px) {*/
+    /*.error-page {*/
+        /*width: 50%;*/
+        /*position: absolute;*/
+        /*left: 25%;*/
+    /*}*/
+/*}*/
 
 p {
     font-family: 'Open Sans', sans-serif;

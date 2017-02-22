@@ -222,7 +222,7 @@ function main(o, data) {
 
     function text(text) {
         text.selectAll("tspan")
-            .attr("x", function(d) { return x(d.x) + 6; })
+            .attr("x", function(d) { return x(d.x) + 6; });
         text.attr("x", function(d) { return x(d.x) + 6; })
             .attr("y", function(d) { return y(d.y) + 6; })
             .style("opacity", function(d) { return this.getComputedTextLength() < x(d.x + d.dx) - x(d.x) ? 1 : 0; });
@@ -242,14 +242,13 @@ function main(o, data) {
     }
 
     function name(d) {
-        console.log(d);
         return d.parent
-            ? name(d.parent) + " / " + d.key + " (" + formatNumber(d.projected_cost) + ")"
+            ? name(d.parent) + " > " + d.key + " (" + formatNumber(d.projected_cost) + ")"
             : d.key + " (" + formatNumber(d.projected_cost) + ")";
     }
 }
 
-d3.csv("data/projects.csv")
+d3.csv("data/odi-cw-1.csv")
     .row(function (d) {
         return {
             agency_code : +d["Agency Code"],
@@ -262,19 +261,19 @@ d3.csv("data/projects.csv")
             uniq_investment_id : d["Unique Investment Identifier"],
             investment_title : d["Investment Title"],
 
-            planned_cost_dolr : +d["Planned Cost ($M)"],
-            projected_cost : +d["Projected/Actual Cost ($M)"],
-            cost_variance_dolr : +d["Cost Variance ($M)"],
+            planned_cost_dolr : +d["Planned Cost ($ M)"],
+            projected_cost : +d["Projected/Actual Cost ($ M)"],
+            cost_variance_dolr : +d["Cost Variance ($ M)"],
             cost_variance_perc : +d["Cost Variance (%)"],
             lifecycle_cost_dolr : +d["Lifecycle Cost ($M)"],
 
             start_date : new Date(d["Start Date"]),
             completion_date : new Date(d["Completion Date (B1)"]),
-            schedule_variance_days : +d["Schedule Variance (days)"],
+            schedule_variance_days : +d["Schedule Variance (in days)"],
             schedule_variance_perc : +d["Schedule Variance (%)"],
             planned_project_completion_date : new Date(d["Planned Project Completion Date (B2)"]),
             actual_project_completion_date : new Date(d["Projected/Actual Project Completion Date (B2)"]),
-            updated_datetime : new Date(d["Updated"])
+            updated_datetime : new Date(d["Updated DateTime"])
         }
     })
     .get(function (err, data) {

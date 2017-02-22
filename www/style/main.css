@@ -35,14 +35,15 @@ p {
 #chart {
     background: #fff;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    cursor: hand;
 }
 
 .title {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 2em;
     text-align: center;
     margin-top: 6px;
-    margin-bottom: 6px;
+    background: green;
 }
 text {
     pointer-events: none;
@@ -87,4 +88,3 @@ rect.parent {
 .children:hover rect.child {
     fill: #bbb;
 }
-

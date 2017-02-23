@@ -1,12 +1,16 @@
 // ------------------------- inspired by http://bl.ocks.org/ganeshv/6a8e9ada3ab7f2d88022 -------------------------------
-
+d3.selection.prototype.first = function () { return d3.select(this[0][0]); };
+d3.selection.prototype.last = function () {
+    var last = this.size() - 1;
+    return d3.select(this[0][last]);
+};
 // Add a truncate function to the string object
 String.prototype.trunc = function(n){
     return this.substr(0, n - 1) + (this.length > n ? '&hellip;' : '');
 };
 
 var defaults = {
-    margin: {top: 24, right: 0, bottom: 0, left: 0},
+    margin: {top: 24, right: 0, bottom: 50, left: 0},
     rootname: "TOP",
     format: "$,.2f",
     title: "",
@@ -84,6 +88,7 @@ function main(o, data) {
     layout(data);
     console.log(data);
     display(data);
+    colourLegend();
     // ----------------------------------- vis ended -------------------------------------------------------------------
 
     // ------------------------------------- all the definitions -------------------------------------------------------
@@ -295,6 +300,76 @@ function main(o, data) {
         return d.parent
             ? navName(d.parent) + " > " + d.key + " (" + formatNumber(d.projected_cost) + ")"
             : d.key + " (" + formatNumber(d.projected_cost) + ")";
+    }
+
+    /**
+     * Create a legend to describe the heatmap colours of the treemap
+     */
+    function colourLegend() {
+        // Create a group for the gradient colour legend
+        var cl = svg.append('g')
+            .attr("transform", "translate(0," + height + ")");
+
+        // Create a rectangle to position the elements on top of
+        cl.append("rect")
+            .attr("width", width + 20)
+            .attr("height", 55)
+            .style("fill", "#2b3e50");
+
+        cl.append("text")
+            .text("Cost Variance ($M)")
+            .attr("y", 10)
+            .attr("dy", '1em')
+            .style("fill", "#FFF");
+
+        var gradient = cl.append("defs").append("linearGradient")
+            .attr("id", 'gradient')
+            .attr("x1", "0%")
+            .attr("x2", "100%")
+            .attr("y1", "0%")
+            .attr("y2", "0%")
+            .attr("spreadMethod", "pad");
+
+        gradient.append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", treemapColour()(minVar))
+            .attr("stop-opacity", 1);
+
+        gradient.append("stop")
+            .attr("offset", "50%")
+            .attr("stop-color", treemapColour()(0))
+            .attr("stop-opacity", 1);
+
+        gradient.append("stop")
+            .attr("offset", "100%")
+            .attr("stop-color", treemapColour()(maxVar))
+            .attr("stop-opacity", 1);
+
+        cl.append("rect")
+            .attr("width", width)
+            .attr("height", 10)
+            .attr("y", 15)
+            .style("fill", "url(#gradient)")
+            .attr("transform", "translate(0,10)");
+
+        var xAxis = d3.svg.axis()
+            .scale(d3.scale.linear().domain([minVar, maxVar]).range([0, width - 1]))
+            .tickSize(0)
+            .tickFormat(function (d) {
+                return d ? d3.format("+,.0f")(d) : 0;
+            })
+            .tickValues([minVar, 0, maxVar]);
+
+        var labels = cl.append("g")
+            .classed("axis", true)
+            .attr("transform", "translate(0,35)")
+            .style("fill", "#fff")
+            .style("stroke", 0.5)
+            .call(xAxis)
+            .selectAll("text");
+
+        labels.first().style('text-anchor', 'start');
+        labels.last().style('text-anchor', 'end');
     }
 
 }

@@ -68,3 +68,13 @@ rect.parent {
 .children:hover rect.child {
     fill: #bbb;
 }
+
+#treemap-container .axis {
+    stroke-width: 1px;
+    stroke: #000;
+    fill: none;
+}
+
+#treemap-container .axis text {
+    stroke-width: 1px;
+}

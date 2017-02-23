@@ -4,6 +4,7 @@
     <list default="true" id="e8f0378b-0a0b-4fa9-8ab8-e7bf234f3c2d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/vis-1.js" afterPath="$PROJECT_DIR$/www/js/vis-1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/style/main.css" afterPath="$PROJECT_DIR$/www/style/main.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +22,8 @@
       <file leaf-file-name="visualisation-1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/visualisation-1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+            <state relative-caret-position="81">
+              <caret line="6" column="43" lean-forward="true" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -33,8 +34,18 @@
       <file leaf-file-name="vis-1.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/vis-1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="337" column="42" lean-forward="false" selection-start-line="337" selection-start-column="42" selection-end-line="337" selection-end-column="42" />
+            <state relative-caret-position="162">
+              <caret line="315" column="30" lean-forward="false" selection-start-line="315" selection-start-column="30" selection-end-line="315" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.min.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/style/bootstrap.min.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="10" column="15568" lean-forward="false" selection-start-line="10" selection-start-column="15562" selection-end-line="10" selection-end-column="15568" />
               <folding />
             </state>
           </provider>
@@ -43,8 +54,8 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/style/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-21">
-              <caret line="27" column="8" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+            <state relative-caret-position="518">
+              <caret line="79" column="1" lean-forward="true" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -85,7 +96,11 @@
       <find>.children</find>
       <find>ptext</find>
       <find>treemap</find>
+      <find>treemap-nav</find>
       <find>chart</find>
+      <find>treemap-chart</find>
+      <find>cost</find>
+      <find>body{</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/www/js</dir>
@@ -118,8 +133,8 @@
         <option value="$PROJECT_DIR$/www/visualisation-2.html" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/lib/d3-tip.js" />
-        <option value="$PROJECT_DIR$/www/style/main.css" />
         <option value="$PROJECT_DIR$/www/visualisation-1.html" />
+        <option value="$PROJECT_DIR$/www/style/main.css" />
         <option value="$PROJECT_DIR$/www/js/vis-1.js" />
       </list>
     </option>
@@ -689,12 +704,12 @@
       <workItem from="1487761608262" duration="13280000" />
       <workItem from="1487778726765" duration="5133000" />
       <workItem from="1487848426714" duration="6535000" />
-      <workItem from="1487870689125" duration="6448000" />
+      <workItem from="1487870689125" duration="10476000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55091000" />
+    <option name="totallyTimeSpent" value="59119000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="1" width="1098" height="1054" extended-state="0" />
@@ -1042,13 +1057,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/partial/navbar.html" />
-    <entry file="file://$PROJECT_DIR$/www/style/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="10" column="126246" lean-forward="false" selection-start-line="10" selection-start-column="126246" selection-end-line="10" selection-end-column="126246" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/fix.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -1094,26 +1102,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/style/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="27" column="8" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+        <state relative-caret-position="518">
+          <caret line="79" column="1" lean-forward="true" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/visualisation-1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        <state relative-caret-position="81">
+          <caret line="6" column="43" lean-forward="true" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/style/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="10" column="15568" lean-forward="false" selection-start-line="10" selection-start-column="15562" selection-end-line="10" selection-end-column="15568" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/js/vis-1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="337" column="42" lean-forward="false" selection-start-line="337" selection-start-column="42" selection-end-line="337" selection-end-column="42" />
+        <state relative-caret-position="162">
+          <caret line="315" column="30" lean-forward="false" selection-start-line="315" selection-start-column="30" selection-end-line="315" selection-end-column="30" />
           <folding />
         </state>
       </provider>

@@ -100,6 +100,8 @@ function main(o, data) {
     accumulateProjectedCost(root);
     layout(root);
     console.log(root);
+    console.log(minVar);
+    console.log(maxVar);
     display(root);
 
     // if (window.parent !== window) {
@@ -311,7 +313,8 @@ d3.csv("data/odi-cw-1.csv")
 
             planned_cost_dolr : +d["Planned Cost ($ M)"],
             projected_cost : +d["Projected/Actual Cost ($ M)"],
-            cost_variance_dolr : +d["Cost Variance ($ M)"],
+            // calculate this?
+            cost_variance_dolr : +d["Planned Cost ($ M)"] - +d["Projected/Actual Cost ($ M)"],//+d["Cost Variance ($ M)"],
             cost_variance_perc : +d["Cost Variance (%)"],
             lifecycle_cost_dolr : +d["Lifecycle Cost ($M)"],
 

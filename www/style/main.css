@@ -14,6 +14,10 @@ p {
     display: list-item;
 }
 
+/*
+Treemap CSS
+*/
+
 #chart {
     background: #fff;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -42,7 +46,7 @@ rect {
 
 rect.parent,
 .navBar rect {
-    stroke-width: 2px;
+    stroke-width: 1px;
 }
 
 rect.parent {

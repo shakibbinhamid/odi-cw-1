@@ -58,17 +58,17 @@ function main(o, data) {
 
     // SVG for the treemap
     var svg = d3.select("#chart")
-            .style("width", width + margin.left + margin.right + "px")
-            .style("height", height + margin.bottom + margin.top + "px")
         .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.bottom + margin.top)
             .style("margin-left", -margin.left + "px")
             .style("margin.right", -margin.right + "px")
+            .style("margin-bottom", -200 + "px") // ----------- some hack here -----------
         .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .style("shape-rendering", "crispEdges");
 
+    // the navbar that takes care of the navigation
     var navBar = svg.append("g")
         .attr("class", "navBar");
 

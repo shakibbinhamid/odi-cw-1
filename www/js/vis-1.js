@@ -108,10 +108,12 @@ function main(o, data) {
     // }
 
     // Create a colour range for the treemap.
-    var treemapColour = d3.scale.linear()
-        .domain([minVar, 0, maxVar])
-        .interpolate(d3.interpolateRgb)
-        .range(['rgb(251,180,174)', 'rgb(238,238,238)', 'rgb(204,235,197)']);
+    function treemapColour() {
+        return d3.scale.linear()
+            .domain([minVar, 0, maxVar])
+            .interpolate(d3.interpolateRgb)
+            .range(['rgb(251,180,174)', 'rgb(238,238,238)', 'rgb(204,235,197)']);
+    }
 
     // create the root DS
     function initialize(root) {
@@ -219,8 +221,8 @@ function main(o, data) {
             .text(function(d) { return formatNumber(d.projected_cost); });
         t.call(text);
 
-        g.selectAll("rect")
-            .style("fill", function(d) { return color(d.key); });
+        // g.selectAll("rect")
+
 
         function transition(d) {
             if (transitioning || !d) return;
@@ -279,7 +281,9 @@ function main(o, data) {
         rect.attr("x", function(d) { return x(d.x); })
             .attr("y", function(d) { return y(d.y); })
             .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
-            .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); });
+            .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
+            // .style("fill", function(d) { return color(d.key); }); // -------------- coloring on grouping ----------
+            .style("fill", function (d) { return treemapColour()(d.cost_variance_dolr); });
     }
 
     function navName(d) {
@@ -287,8 +291,6 @@ function main(o, data) {
             ? navName(d.parent) + " > " + d.key + " (" + formatNumber(d.projected_cost) + ")"
             : d.key + " (" + formatNumber(d.projected_cost) + ")";
     }
-
-
 
 }
 

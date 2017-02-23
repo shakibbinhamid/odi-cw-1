@@ -162,24 +162,25 @@ function main(o, data) {
             .data(function(d) { return d._children || [d]; })
             .enter().append("g");
 
+        // create the parent node
         g.append("rect")
             .attr("class", "child")
             .call(rect)
             .append("title")
-            .text(function(d) { return d.key ? d.key + " (" + formatNumber(d.projected_cost) + ")" : "" + " (" + formatNumber(d.projected_cost) + ")"; });
+            .text(function(d) { return d.key ; });
 
-        children.append("text")
-            .attr("class", "ctext")
-            .text(function(d) { return d.key; })
-            .call(text2);
+        // children.append("text")
+        //     .attr("class", "ctext")
+        //     .text(function(d) { return d.key; })
+        //     .call(text2);
 
-        g.append("rect")
-            .attr("class", "parent")
-            .call(rect);
+        // g.append("rect")
+        //     .attr("class", "parent")
+        //     .call(rect);
 
         var t = g.append("text")
             .attr("class", "ptext")
-            .attr("dy", ".75em")
+            .attr("dy", ".75em");
 
         t.append("tspan")
             .text(function(d) { return d.key; });

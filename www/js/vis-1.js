@@ -10,6 +10,11 @@ window.addEventListener('message', function(e) {
     return main(opts, data);
 });
 
+// Add a truncate function to the string object
+String.prototype.trunc = function(n){
+    return this.substr(0, n - 1) + (this.length > n ? '&hellip;' : '');
+};
+
 var defaults = {
     margin: {top: 24, right: 0, bottom: 0, left: 0},
     rootname: "TOP",
@@ -27,13 +32,14 @@ function main(o, data) {
         margin = opts.margin;
         theight = 36 + 16;
 
-    // $('#chart').width(opts.width).height(opts.height);
+    // specify the margins
     var width = $('#chart').width() - margin.left - margin.right,
         height = 9/16*$('#chart').width() - margin.top - margin.bottom - theight,
         transitioning;
 
     var color = d3.scale.category20c();
 
+    // x and y scale for the treemap
     var x = d3.scale.linear()
         .domain([0, width])
         .range([0, width]);
@@ -42,6 +48,7 @@ function main(o, data) {
         .domain([0, height])
         .range([0, height]);
 
+    // d3 treemap layout, projected cost is used for cell value calculation
     var treemap = d3.layout.treemap()
         .children(function(d, depth) { return depth ? null : d._children; })
         .value(function (d) { return d.projected_cost; })
@@ -49,14 +56,18 @@ function main(o, data) {
         .ratio(height / width * 0.5 * (1 + Math.sqrt(5)))
         .round(false);
 
-    var svg = d3.select("#chart").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.bottom + margin.top)
-        .style("margin-left", -margin.left + "px")
-        .style("margin.right", -margin.right + "px")
+    // SVG for the treemap
+    var svg = d3.select("#chart")
+            .style("width", width + margin.left + margin.right + "px")
+            .style("height", height + margin.bottom + margin.top + "px")
+        .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.bottom + margin.top)
+            .style("margin-left", -margin.left + "px")
+            .style("margin.right", -margin.right + "px")
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .style("shape-rendering", "crispEdges");
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .style("shape-rendering", "crispEdges");
 
     var grandparent = svg.append("g")
         .attr("class", "grandparent");

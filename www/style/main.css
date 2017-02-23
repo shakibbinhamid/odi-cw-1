@@ -10,14 +10,11 @@ p {
     display: list-item;
 }
 
-/*
-Treemap CSS
-*/
+/* Treemap CSS -------------------------------------------------------------------------------------------------------*/
 
-#chart {
+#treemap {
     background: #fff;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    cursor: hand;
+    cursor: pointer;
 }
 
 .title {
@@ -25,9 +22,10 @@ Treemap CSS
     font-size: 2em;
     text-align: center;
     margin: 0;
-    background: green;
+    background: #4cae4c;
 }
-text {
+
+#treemap text {
     pointer-events: none;
 }
 
@@ -37,7 +35,7 @@ text {
 
 rect {
     fill: none;
-    stroke: #fff;
+    stroke: darkgrey;
 }
 
 rect.parent,

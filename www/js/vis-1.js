@@ -1,14 +1,4 @@
-/**
- * Created by shakibbinhamid on 22/02/17.
- */
-// console.log("You're on visualisation 1");
-
-// window.addEventListener('message', function(e) {
-//     var opts = e.data.opts,
-//         data = e.data.data;
-//
-//     return main(opts, data);
-// });
+// ------------------------- inspired by http://bl.ocks.org/ganeshv/6a8e9ada3ab7f2d88022 -------------------------------
 
 // Add a truncate function to the string object
 String.prototype.trunc = function(n){
@@ -25,20 +15,18 @@ var defaults = {
 };
 
 function main(o, data) {
-    var root,
-        opts = $.extend(true, {}, defaults, o),
+    var opts = $.extend(true, {}, defaults, o),
         formatNumber = d3.format(opts.format),
-        rname = opts.rootname,
         margin = opts.margin,
-        theight = 36 + 16,
         minVar = Infinity,
         maxVar = -Infinity;
 
     // specify the margins
-    var width = $('#chart').width() - margin.left - margin.right,
-        height = 9/16*$('#chart').width() - margin.top - margin.bottom - theight,
+    var width = $('#treemap').width() - margin.left - margin.right,
+        height = 9/16*$('#treemap').width() - margin.top - margin.bottom,
         transitioning;
 
+    // coloring for groups
     var color = d3.scale.category20c();
 
     // x and y scale for the treemap
@@ -59,7 +47,7 @@ function main(o, data) {
         .round(false);
 
     // SVG for the treemap
-    var svg = d3.select("#chart")
+    var svg = d3.select("#treemap")
         .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.bottom + margin.top)
@@ -86,28 +74,19 @@ function main(o, data) {
 
     // add the title to navbar
     if (opts.title) {
-        $("#chart").prepend("<p class='title'>" + opts.title + "</p>");
+        $("#treemap").prepend("<p class='title'>" + opts.title + "</p>");
     }
 
-    if (data instanceof Array) {
-        root = { key: rname, values: data };
-    } else {
-        root = data;
-    }
+    // ------------------------------------- all the calls -------------------------------------------------------------
+    initialize(data);
+    accumulateVariance(data);
+    accumulateProjectedCost(data);
+    layout(data);
+    console.log(data);
+    display(data);
+    // ----------------------------------- vis ended -------------------------------------------------------------------
 
-    initialize(root);
-    accumulateVariance(root);
-    accumulateProjectedCost(root);
-    layout(root);
-    console.log(root);
-    console.log(minVar);
-    console.log(maxVar);
-    display(root);
-
-    // if (window.parent !== window) {
-    //     var myheight = document.documentElement.scrollHeight || document.body.scrollHeight;
-    //     window.parent.postMessage({height: myheight}, '*');
-    // }
+    // ------------------------------------- all the definitions -------------------------------------------------------
 
     // Create a colour range for the treemap.
     function treemapColour() {
@@ -132,16 +111,7 @@ function main(o, data) {
             : d.projected_cost;
     }
 
-    /**
-     * Used to loop over the projects hierarchy and accumulate the cost variance
-     * at each level. Makes use of javascript's reduce() function to recursively
-     * traverse the levels
-     *
-     * @param   {Object} d The hierarchy object to iterate over. Must have variance
-     *                   at its leaf level
-     * @returns {Object} The altered dataset object with variance calculated at each
-     *                   level
-     */
+    // ----------------- help from https://github.com/eskriett/open-data-vis/blob/master/js/treemap.js -----------------
     function accumulateVariance(d) {
         if (d.values) {
             d.cost_variance_dolr = d.values.reduce(function (prev, current) {
@@ -152,6 +122,7 @@ function main(o, data) {
         maxVar = d.cost_variance_dolr > maxVar ? d.cost_variance_dolr : maxVar;
         return d.cost_variance_dolr;
     }
+    // --------------------- help ended --------------------------------------------------------------------------------
 
     // x,y,width,height for rects for each node
     function layout(d) {
@@ -203,28 +174,11 @@ function main(o, data) {
             .append("title")
             .text(function(d) { return d.key ; });
 
-        // children.append("text")
-        //     .attr("class", "ctext")
-        //     .text(function(d) { return d.key; })
-        //     .call(text2);
-
-        // g.append("rect")
-        //     .attr("class", "parent")
-        //     .call(rect);
-
-        var t = g.append("text")
+        // create the labels
+        g.append("text")
             .attr("class", "ptext")
-            .attr("dy", ".75em");
-
-        t.append("tspan")
-            .text(function(d) { return d.key; });
-        t.append("tspan")
-            .attr("dy", "1.0em")
-            .text(function(d) { return formatNumber(d.projected_cost); });
-        t.call(text);
-
-        // g.selectAll("rect")
-
+            .attr("dy", ".75em")
+            .call(text);
 
         function transition(d) {
             if (transitioning || !d) return;
@@ -249,9 +203,9 @@ function main(o, data) {
 
             // Transition to the new view.
             t1.selectAll(".ptext").call(text).style("fill-opacity", 0);
-            t1.selectAll(".ctext").call(text2).style("fill-opacity", 0);
+            t1.selectAll(".ctext").call(text).style("fill-opacity", 0);
             t2.selectAll(".ptext").call(text).style("fill-opacity", 1);
-            t2.selectAll(".ctext").call(text2).style("fill-opacity", 1);
+            t2.selectAll(".ctext").call(text).style("fill-opacity", 1);
             t1.selectAll("rect").call(rect);
             t2.selectAll("rect").call(rect);
 
@@ -265,6 +219,8 @@ function main(o, data) {
         return g;
     }
 
+    // --------- help from https://github.com/eskriett/open-data-vis/blob/master/js/treemap.js -------------------------
+
     function text(text) {
         text.attr("x", function(d) { return x(d.x) + 6; })
             .attr("y", function(d) { return y(d.y) + 6; });
@@ -274,7 +230,7 @@ function main(o, data) {
                 width = x(d.x + d.dx) - x(d.x); // The width of the rect
 
             var str = d.key || d.project_name,
-                lines = createLines(str, width / 10);
+                lines = createLines(str, width / 7);
 
             // For each line append a new tspan to the current text Element
             textElement.text(null)
@@ -287,20 +243,9 @@ function main(o, data) {
                 .attr("dy", "0.75em");
         });
 
-        text.style("opacity", displayText)
-
-        // text.selectAll("tspan")
-        //     .attr("x", function(d) { return x(d.x) + 6; });
-        //
-        //     .style("opacity", function(d) { return this.getComputedTextLength() < x(d.x + d.dx) - x(d.x) ? 1 : 0; });
+        text.style("opacity", displayText);
     }
 
-    /**
-     * Determines whether or not there is room to display text
-     * @param   {Object} d The SVG text node
-     * @returns {Number} The opacity of the element - 0 for hidden,
-     *                   1 for display
-     */
     function displayText(d) {
         var box = this.getBBox(),
             rectWidth = (x(d.x + d.dx) - x(d.x)) - 10,
@@ -308,39 +253,6 @@ function main(o, data) {
         return (box.width <= rectWidth && box.height <= rectHeight) ? 1 : 0;
     }
 
-    function text2(text) {
-        text.attr("x", function(d) { return x(d.x + d.dx) - this.getComputedTextLength() - 6; })
-            .attr("y", function(d) { return y(d.y + d.dy) - 6; })
-            .style("opacity", function(d) { return this.getComputedTextLength() < x(d.x + d.dx) - x(d.x) ? 1 : 0; });
-    }
-
-    function rect(rect) {
-        rect.attr("x", function(d) { return x(d.x); })
-            .attr("y", function(d) { return y(d.y); })
-            .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
-            .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
-            // .style("fill", function(d) { return color(d.key); }); // -------------- coloring on grouping ----------
-            .style("fill", function (d) { return treemapColour()(d.cost_variance_dolr); });
-    }
-
-    function navName(d) {
-        return d.parent
-            ? navName(d.parent) + " > " + d.key + " (" + formatNumber(d.projected_cost) + ")"
-            : d.key + " (" + formatNumber(d.projected_cost) + ")";
-    }
-
-    /**
-     * Break text into multiple lines based on width of containter
-     * text is to be displayed within
-     *
-     * @param   {String} str   The string to be added
-     * @param   {Number} width The width of the element the text
-     *                       is to positioned within
-     * @returns {Array}  An array of objects, each containing the line
-     *                   and linenumber. These can be used to dynamically
-     *                   build elements, for example tspans for wrapping
-     *                   text in SVGs
-     */
     function createLines(str, width) {
         var words = str.split(' '),
             word,
@@ -368,6 +280,23 @@ function main(o, data) {
         return lines;
     }
 
+    // --------------------- help ended --------------------------------------------------------------------------------
+
+    function rect(rect) {
+        rect.attr("x", function(d) { return x(d.x); })
+            .attr("y", function(d) { return y(d.y); })
+            .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
+            .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
+            // .style("fill", function(d) { return color(d.key); }); // -------------- coloring on grouping ----------
+            .style("fill", function (d) { return treemapColour()(d.cost_variance_dolr); });
+    }
+
+    function navName(d) {
+        return d.parent
+            ? navName(d.parent) + " > " + d.key + " (" + formatNumber(d.projected_cost) + ")"
+            : d.key + " (" + formatNumber(d.projected_cost) + ")";
+    }
+
 }
 
 var nested;
@@ -387,9 +316,8 @@ d3.csv("data/odi-cw-1.csv")
 
             planned_cost_dolr : +d["Planned Cost ($ M)"],
             projected_cost : +d["Projected/Actual Cost ($ M)"],
-            // calculate this?
             cost_variance_dolr : +d["Planned Cost ($ M)"] - +d["Projected/Actual Cost ($ M)"],//+d["Cost Variance ($ M)"],
-            cost_variance_perc : +d["Cost Variance (%)"],
+            cost_variance_perc : (+d["Planned Cost ($ M)"] - +d["Projected/Actual Cost ($ M)"])/+d["Planned Cost ($ M)"],//+d["Cost Variance (%)"],
             lifecycle_cost_dolr : +d["Lifecycle Cost ($M)"],
 
             start_date : new Date(d["Start Date"]),
@@ -411,6 +339,6 @@ d3.csv("data/odi-cw-1.csv")
     });
 
 window.addEventListener("resize", function () {
-    $("#chart").empty();
+    $("#treemap").empty();
     main({title: "US Gov Spending"}, {key: "US", values: nested});
 });

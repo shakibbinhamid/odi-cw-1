@@ -266,11 +266,46 @@ function main(o, data) {
     }
 
     function text(text) {
-        text.selectAll("tspan")
-            .attr("x", function(d) { return x(d.x) + 6; });
         text.attr("x", function(d) { return x(d.x) + 6; })
-            .attr("y", function(d) { return y(d.y) + 6; })
-            .style("opacity", function(d) { return this.getComputedTextLength() < x(d.x + d.dx) - x(d.x) ? 1 : 0; });
+            .attr("y", function(d) { return y(d.y) + 6; });
+
+        text.each(function (d) {
+            var textElement = d3.select(this),
+                width = x(d.x + d.dx) - x(d.x); // The width of the rect
+
+            var str = d.key || d.project_name,
+                lines = createLines(str, width / 10);
+
+            // For each line append a new tspan to the current text Element
+            textElement.text(null)
+                .selectAll("tspan")
+                .data(lines)
+                .enter().append("tspan")
+                .text(function (l) { return l.line; })
+                .attr("x", x(d.x) + 6)
+                .attr("y", function (l) { return (y(d.y) + 6) + l.lineNum * 12; })
+                .attr("dy", "0.75em");
+        });
+
+        text.style("opacity", displayText)
+
+        // text.selectAll("tspan")
+        //     .attr("x", function(d) { return x(d.x) + 6; });
+        //
+        //     .style("opacity", function(d) { return this.getComputedTextLength() < x(d.x + d.dx) - x(d.x) ? 1 : 0; });
+    }
+
+    /**
+     * Determines whether or not there is room to display text
+     * @param   {Object} d The SVG text node
+     * @returns {Number} The opacity of the element - 0 for hidden,
+     *                   1 for display
+     */
+    function displayText(d) {
+        var box = this.getBBox(),
+            rectWidth = (x(d.x + d.dx) - x(d.x)) - 10,
+            rectHeight = (y(d.y + d.dy) - y(d.y)) - 10;
+        return (box.width <= rectWidth && box.height <= rectHeight) ? 1 : 0;
     }
 
     function text2(text) {
@@ -292,6 +327,45 @@ function main(o, data) {
         return d.parent
             ? navName(d.parent) + " > " + d.key + " (" + formatNumber(d.projected_cost) + ")"
             : d.key + " (" + formatNumber(d.projected_cost) + ")";
+    }
+
+    /**
+     * Break text into multiple lines based on width of containter
+     * text is to be displayed within
+     *
+     * @param   {String} str   The string to be added
+     * @param   {Number} width The width of the element the text
+     *                       is to positioned within
+     * @returns {Array}  An array of objects, each containing the line
+     *                   and linenumber. These can be used to dynamically
+     *                   build elements, for example tspans for wrapping
+     *                   text in SVGs
+     */
+    function createLines(str, width) {
+        var words = str.split(' '),
+            word,
+            lines = [],
+            current = '',
+            lineNum = 0;
+
+        // Loop through each word and try fit it onto current line
+        while (word = words.shift()) {
+            if (current.length + word.length + 1 < width) {
+                current += current === '' ? word : ' ' + word;
+            } else {
+                if (current === '') { current = word; }
+
+                lines.push({ line: current, lineNum: lineNum });
+                lineNum++;
+                current = word;
+            }
+        }
+        // Add the last line if it isn't blank
+        if (current !== '') {
+            lines.push({ line: current, lineNum: lineNum });
+        }
+
+        return lines;
     }
 
 }

@@ -18,7 +18,7 @@ String.prototype.trunc = function(n){
 var defaults = {
     margin: {top: 24, right: 0, bottom: 0, left: 0},
     rootname: "TOP",
-    format: ".2f",
+    format: "$,.2f",
     title: "",
     width: 1000,
     height: 650

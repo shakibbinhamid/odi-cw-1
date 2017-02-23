@@ -29,8 +29,10 @@ function main(o, data) {
         opts = $.extend(true, {}, defaults, o),
         formatNumber = d3.format(opts.format),
         rname = opts.rootname,
-        margin = opts.margin;
-        theight = 36 + 16;
+        margin = opts.margin,
+        theight = 36 + 16,
+        minVar = Infinity,
+        maxVar = -Infinity;
 
     // specify the margins
     var width = $('#chart').width() - margin.left - margin.right,
@@ -94,6 +96,7 @@ function main(o, data) {
     }
 
     initialize(root);
+    accumulateVariance(root);
     accumulateProjectedCost(root);
     layout(root);
     console.log(root);
@@ -103,6 +106,12 @@ function main(o, data) {
     //     var myheight = document.documentElement.scrollHeight || document.body.scrollHeight;
     //     window.parent.postMessage({height: myheight}, '*');
     // }
+
+    // Create a colour range for the treemap.
+    var treemapColour = d3.scale.linear()
+        .domain([minVar, 0, maxVar])
+        .interpolate(d3.interpolateRgb)
+        .range(['rgb(251,180,174)', 'rgb(238,238,238)', 'rgb(204,235,197)']);
 
     // create the root DS
     function initialize(root) {
@@ -117,6 +126,27 @@ function main(o, data) {
         return (d._children = d.values)
             ? d.projected_cost = d.values.reduce(function(p, v) { return p + accumulateProjectedCost(v); }, 0)
             : d.projected_cost;
+    }
+
+    /**
+     * Used to loop over the projects hierarchy and accumulate the cost variance
+     * at each level. Makes use of javascript's reduce() function to recursively
+     * traverse the levels
+     *
+     * @param   {Object} d The hierarchy object to iterate over. Must have variance
+     *                   at its leaf level
+     * @returns {Object} The altered dataset object with variance calculated at each
+     *                   level
+     */
+    function accumulateVariance(d) {
+        if (d.values) {
+            d.cost_variance_dolr = d.values.reduce(function (prev, current) {
+                return prev + accumulateVariance(current);
+            }, 0);
+        }
+        minVar = d.cost_variance_dolr < minVar ? d.cost_variance_dolr : minVar;
+        maxVar = d.cost_variance_dolr > maxVar ? d.cost_variance_dolr : maxVar;
+        return d.cost_variance_dolr;
     }
 
     // x,y,width,height for rects for each node

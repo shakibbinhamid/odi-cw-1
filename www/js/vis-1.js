@@ -69,15 +69,15 @@ function main(o, data) {
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .style("shape-rendering", "crispEdges");
 
-    var grandparent = svg.append("g")
-        .attr("class", "grandparent");
+    var navBar = svg.append("g")
+        .attr("class", "navBar");
 
-    grandparent.append("rect")
+    navBar.append("rect")
         .attr("y", -margin.top)
         .attr("width", width)
         .attr("height", margin.top);
 
-    grandparent.append("text")
+    navBar.append("text")
         .attr("x", 6)
         .attr("y", 6 - margin.top)
         .attr("dy", ".75em");
@@ -131,13 +131,13 @@ function main(o, data) {
     }
 
     function display(d) {
-        grandparent
+        navBar
             .datum(d.parent)
             .on("click", transition)
             .select("text")
             .text(name(d));
 
-        var g1 = svg.insert("g", ".grandparent")
+        var g1 = svg.insert("g", ".navBar")
             .datum(d)
             .attr("class", "depth");
 

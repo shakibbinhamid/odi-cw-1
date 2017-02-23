@@ -31,7 +31,7 @@ text {
     pointer-events: none;
 }
 
-.grandparent text {
+.navBar text {
     font-weight: bold;
 }
 
@@ -41,7 +41,7 @@ rect {
 }
 
 rect.parent,
-.grandparent rect {
+.navBar rect {
     stroke-width: 2px;
 }
 
@@ -49,16 +49,16 @@ rect.parent {
     pointer-events: none;
 }
 
-.grandparent rect {
+.navBar rect {
     fill: orange;
 }
 
-.grandparent:hover rect {
+.navBar:hover rect {
     fill: #ee9700;
 }
 
 .children rect.parent,
-.grandparent rect {
+.navBar rect {
     cursor: pointer;
 }
 

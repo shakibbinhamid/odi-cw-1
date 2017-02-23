@@ -1,14 +1,14 @@
 /**
  * Created by shakibbinhamid on 22/02/17.
  */
-console.log("You're on visualisation 1");
+// console.log("You're on visualisation 1");
 
-window.addEventListener('message', function(e) {
-    var opts = e.data.opts,
-        data = e.data.data;
-
-    return main(opts, data);
-});
+// window.addEventListener('message', function(e) {
+//     var opts = e.data.opts,
+//         data = e.data.data;
+//
+//     return main(opts, data);
+// });
 
 // Add a truncate function to the string object
 String.prototype.trunc = function(n){
@@ -82,6 +82,7 @@ function main(o, data) {
         .attr("y", 6 - margin.top)
         .attr("dy", ".75em");
 
+    // add the title to navbar
     if (opts.title) {
         $("#chart").prepend("<p class='title'>" + opts.title + "</p>");
     }
@@ -93,16 +94,17 @@ function main(o, data) {
     }
 
     initialize(root);
-    accumulate(root);
+    accumulateProjectedCost(root);
     layout(root);
     console.log(root);
     display(root);
 
-    if (window.parent !== window) {
-        var myheight = document.documentElement.scrollHeight || document.body.scrollHeight;
-        window.parent.postMessage({height: myheight}, '*');
-    }
+    // if (window.parent !== window) {
+    //     var myheight = document.documentElement.scrollHeight || document.body.scrollHeight;
+    //     window.parent.postMessage({height: myheight}, '*');
+    // }
 
+    // create the root DS
     function initialize(root) {
         root.x = root.y = 0;
         root.dx = width;
@@ -110,12 +112,14 @@ function main(o, data) {
         root.depth = 0;
     }
 
-    function accumulate(d) {
+    // sum the projected cost for the children
+    function accumulateProjectedCost(d) {
         return (d._children = d.values)
-            ? d.projected_cost = d.values.reduce(function(p, v) { return p + accumulate(v); }, 0)
+            ? d.projected_cost = d.values.reduce(function(p, v) { return p + accumulateProjectedCost(v); }, 0)
             : d.projected_cost;
     }
 
+    // x,y,width,height for rects for each node
     function layout(d) {
         if (d._children) {
             treemap.nodes({_children: d._children});

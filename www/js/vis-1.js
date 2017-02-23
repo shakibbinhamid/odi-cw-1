@@ -163,7 +163,7 @@ function main(o, data) {
             .on("click", transition);
 
         // create the children for the treemap
-        var children = g.selectAll(".child")
+        g.selectAll(".child")
             .data(function(d) { return d._children || [d]; })
             .enter().append("g");
 
@@ -176,9 +176,10 @@ function main(o, data) {
 
         // create the labels
         g.append("text")
-            .attr("class", "ptext")
             .attr("dy", ".75em")
-            .call(text);
+            .call(text)
+            .classed("text-node", true)
+            .style("opacity", displayText);
 
         function transition(d) {
             if (transitioning || !d) return;
@@ -199,13 +200,12 @@ function main(o, data) {
             svg.selectAll(".depth").sort(function(a, b) { return a.depth - b.depth; });
 
             // Fade-in entering text.
-            g2.selectAll("text").style("fill-opacity", 0);
+            d3.selectAll(".text-node").style("fill-opacity", 0);
+            // g2.selectAll("text").style("fill-opacity", 0);
 
             // Transition to the new view.
-            t1.selectAll(".ptext").call(text).style("fill-opacity", 0);
-            t1.selectAll(".ctext").call(text).style("fill-opacity", 0);
-            t2.selectAll(".ptext").call(text).style("fill-opacity", 1);
-            t2.selectAll(".ctext").call(text).style("fill-opacity", 1);
+            t1.selectAll("text").call(text).style("fill-opacity", 0);
+            t2.selectAll("text").call(text).style("fill-opacity", 1).style("opacity", displayText);
             t1.selectAll("rect").call(rect);
             t2.selectAll("rect").call(rect);
 
@@ -335,10 +335,10 @@ d3.csv("data/odi-cw-1.csv")
             .key(function (d) { return d.investment_title; })
             .entries(data);
 
-        main({title: "US Gov Spending"}, {key: "US", values: nested});
+        main({title: "US Government Agency Spending"}, {key: "US", values: nested});
     });
 
 window.addEventListener("resize", function () {
     $("#treemap").empty();
-    main({title: "US Gov Spending"}, {key: "US", values: nested});
+    main({title: "US Government Agency Spending"}, {key: "US", values: nested});
 });

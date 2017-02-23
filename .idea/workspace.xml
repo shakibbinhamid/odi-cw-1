@@ -30,8 +30,8 @@
       <file leaf-file-name="vis-1.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/vis-1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="130" column="29" lean-forward="true" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="29" />
+            <state relative-caret-position="316">
+              <caret line="167" column="28" lean-forward="true" selection-start-line="167" selection-start-column="28" selection-end-line="167" selection-end-column="28" />
               <folding>
                 <element signature="e#0#49#0" expanded="false" />
               </folding>
@@ -42,8 +42,8 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/style/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="48" column="19" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+            <state relative-caret-position="524">
+              <caret line="68" column="6" lean-forward="false" selection-start-line="68" selection-start-column="6" selection-end-line="68" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -74,6 +74,9 @@
       <find>title</find>
       <find>grandparent</find>
       <find>accumulate</find>
+      <find>name(</find>
+      <find>depth</find>
+      <find>.depth</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/www/js</dir>
@@ -656,12 +659,12 @@
       <workItem from="1487686010936" duration="13110000" />
       <workItem from="1487761608262" duration="13280000" />
       <workItem from="1487778726765" duration="5133000" />
-      <workItem from="1487848426714" duration="3417000" />
+      <workItem from="1487848426714" duration="4832000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41899000" />
+    <option name="totallyTimeSpent" value="43314000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1300" height="1416" extended-state="0" />
@@ -998,16 +1001,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/style/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="48" column="19" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+        <state relative-caret-position="524">
+          <caret line="68" column="6" lean-forward="false" selection-start-line="68" selection-start-column="6" selection-end-line="68" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/vis-1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="130" column="29" lean-forward="true" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="29" />
+        <state relative-caret-position="316">
+          <caret line="167" column="28" lean-forward="true" selection-start-line="167" selection-start-column="28" selection-end-line="167" selection-end-column="28" />
           <folding>
             <element signature="e#0#49#0" expanded="false" />
           </folding>

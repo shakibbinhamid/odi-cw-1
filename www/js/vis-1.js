@@ -135,33 +135,39 @@ function main(o, data) {
     }
 
     function display(d) {
+
+        // configure the navbar
         navBar
             .datum(d.parent)
             .on("click", transition)
             .select("text")
-            .text(name(d));
+            .text(navName(d));
 
         var g1 = svg.insert("g", ".navBar")
-            .datum(d)
-            .attr("class", "depth");
+            .datum(d);
+            // .attr("class", "depth");
 
+        // for each child greate a group
         var g = g1.selectAll("g")
             .data(d._children)
             .enter().append("g");
 
+        // for each node that has children transition on click
         g.filter(function(d) { return d._children; })
             .classed("children", true)
             .on("click", transition);
 
+        // create the children for the treemap
         var children = g.selectAll(".child")
             .data(function(d) { return d._children || [d]; })
             .enter().append("g");
 
-        children.append("rect")
+        g.append("rect")
             .attr("class", "child")
             .call(rect)
             .append("title")
-            .text(function(d) { return d.key + " (" + formatNumber(d.projected_cost) + ")"; });
+            .text(function(d) { return d.key ? d.key + " (" + formatNumber(d.projected_cost) + ")" : "" + " (" + formatNumber(d.projected_cost) + ")"; });
+
         children.append("text")
             .attr("class", "ctext")
             .text(function(d) { return d.key; })
@@ -245,9 +251,9 @@ function main(o, data) {
             .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); });
     }
 
-    function name(d) {
+    function navName(d) {
         return d.parent
-            ? name(d.parent) + " > " + d.key + " (" + formatNumber(d.projected_cost) + ")"
+            ? navName(d.parent) + " > " + d.key + " (" + formatNumber(d.projected_cost) + ")"
             : d.key + " (" + formatNumber(d.projected_cost) + ")";
     }
 

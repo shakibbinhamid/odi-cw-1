@@ -30,6 +30,8 @@ function main(o, data) {
         height = 9/16*$('#treemap').width() - margin.top - margin.bottom,
         transitioning;
 
+	$('#treemap-chart').css('height', (height + 100) + 'px')
+
     // coloring for groups
     var color = d3.scale.category20c();
 

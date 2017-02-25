@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8f0378b-0a0b-4fa9-8ab8-e7bf234f3c2d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/vis-1.js" afterPath="$PROJECT_DIR$/www/js/vis-1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/style/main.css" afterPath="$PROJECT_DIR$/www/style/main.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,8 +32,8 @@
       <file leaf-file-name="vis-1.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/js/vis-1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="294" column="0" lean-forward="false" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+            <state relative-caret-position="349">
+              <caret line="290" column="0" lean-forward="true" selection-start-line="290" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -703,7 +701,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68926000" />
+    <option name="totallyTimeSpent" value="69028000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="1" width="1115" height="1054" extended-state="0" />
@@ -1116,8 +1114,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/vis-1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="294" column="0" lean-forward="false" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+        <state relative-caret-position="349">
+          <caret line="290" column="0" lean-forward="true" selection-start-line="290" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
           <folding />
         </state>
       </provider>

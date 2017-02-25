@@ -289,7 +289,7 @@ function main(o, data) {
                         }
                     });
 
-                    $("#treemap-aside-body").append(child);
+                    $("#treemap-aside-body").prepend(child);
 
                 });
             }

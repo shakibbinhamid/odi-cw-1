@@ -12,7 +12,7 @@ String.prototype.trunc = function(n){
 var defaults = {
     margin: {top: 24, right: 0, bottom: 50, left: 0},
     rootname: "TOP",
-    format: "$,.2f",
+    format: function(d){return "$" + d3.format(".2f")(d) + "M";},
     title: "",
     width: 1000,
     height: 650
@@ -20,7 +20,7 @@ var defaults = {
 
 function main(o, data) {
     var opts = $.extend(true, {}, defaults, o),
-        formatNumber = d3.format(opts.format),
+        formatNumber = opts.format,
         margin = opts.margin,
         minVar = Infinity,
         maxVar = -Infinity;
@@ -248,24 +248,35 @@ function main(o, data) {
             data._children.forEach(function (d){
                 var littleTitle = d.key || d.project_name;
                 var asideItemBody = "";
+                var displayItem = {};
 
                 if (d.project_id) {
 
-                    var displayItem = {
+                    displayItem = {
                         ID : d.project_id,
                         Name : d.project_name,
                         Desc : d.project_description,
                         "Planned Cost": formatNumber(d.planned_cost_dolr),
                         "Actual/Projected Cost": formatNumber(d.projected_cost),
-                        ""
+                        "Cost Variance": formatNumber(d.cost_variance_dolr),
+                        "Start Date": d.start_date,
+                        "Planned Completion Date": d.actual_project_completion_date,
+                        "Projected/Actual Completion Date": d.actual_project_completion_date,
+                        "Schedule Variance": d.schedule_variance_days + " days"
                     };
 
-                    for (var key in displayItem) {
-                        asideItemBody +=
-                            "<p class='treemap-aside-item-body-item'>"
-                            + "<span class='treemap-aside-item-item-name'>" + key + "</span>" + " : " + "<span>"+ displayItem[key] + "<span>"
-                            + "</p>";
-                    }
+                } else {
+                    displayItem = {
+                        "Total Actual/Projected Cost": formatNumber(d.projected_cost),
+                        "Total Cost Variance": formatNumber(d.cost_variance_dolr)
+                    };
+                }
+
+                for (var key in displayItem) {
+                    asideItemBody +=
+                        "<p class='treemap-aside-item-body-item'>"
+                        + "<span class='treemap-aside-item-item-name'>" + key + "</span>" + " : " + "<span>"+ displayItem[key] + "<span>"
+                        + "</p>";
                 }
 
                 childrenHtml +=   "<a class='list-group-item'>"

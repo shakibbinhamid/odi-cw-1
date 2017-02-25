@@ -85,4 +85,18 @@ rect.parent {
 
 .treemap-aside-item-title {
     font-size: 0.9em;
+    font-style: italic;
+}
+
+.treemap-aside-item-body {
+    font-size: 0.7em;
+}
+
+.treemap-aside-item-body-item {
+    padding: 0;
+    margin:0;
+}
+
+.treemap-aside-item-item-name {
+    font-weight: bold;
 }

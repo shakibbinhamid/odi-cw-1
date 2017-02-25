@@ -227,25 +227,52 @@ function main(o, data) {
     }
     
     function updateAside(data) {
+
+        // set the heading of aside
         var heading = "";
+
         if (data.key && data.projected_cost) {
             heading = data.key + " " + formatNumber(data.projected_cost);
         }
+
         $("#treemap-aside-heading").html(heading);
+
+        // empty the aside body and set the height
         $("#treemap-aside-body").empty();
         $("#treemap-aside-body").css('max-height', height);
 
 
+        // set the content of the aside
         if (data._children) {
             var childrenHtml = "";
-            var littleTitle;
             data._children.forEach(function (d){
-                littleTitle = d.key || d.project_name;
+                var littleTitle = d.key || d.project_name;
+                var asideItemBody = "";
+
+                if (d.project_id) {
+
+                    var displayItem = {
+                        ID : d.project_id,
+                        Name : d.project_name,
+                        Desc : d.project_description,
+                        "Planned Cost": formatNumber(d.planned_cost_dolr),
+                        "Actual/Projected Cost": formatNumber(d.projected_cost),
+                        ""
+                    };
+
+                    for (var key in displayItem) {
+                        asideItemBody +=
+                            "<p class='treemap-aside-item-body-item'>"
+                            + "<span class='treemap-aside-item-item-name'>" + key + "</span>" + " : " + "<span>"+ displayItem[key] + "<span>"
+                            + "</p>";
+                    }
+                }
 
                 childrenHtml +=   "<a class='list-group-item'>"
                                 +   "<div class='treemap-aside-item-title'>"
                                 +       littleTitle
                                 +   "</div>"
+                                +   "<div class='treemap-aside-item-body'>" + asideItemBody +"</div>"
                                 + "</a>";
             });
 

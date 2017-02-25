@@ -81,6 +81,7 @@ rect.parent {
 
 #treemap-aside-body {
     overflow-y: scroll;
+    cursor: pointer;
 }
 
 .treemap-aside-item-title {

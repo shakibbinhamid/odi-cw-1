@@ -223,74 +223,81 @@ function main(o, data) {
             });
         }
 
+        function updateAside(data) {
+
+            // set the heading of aside
+            var heading = "";
+
+            if (data.key && data.projected_cost) {
+                heading = data.key + " " + formatNumber(data.projected_cost);
+            }
+
+            $("#treemap-aside-heading").html(heading);
+
+            // empty the aside body and set the height
+            $("#treemap-aside-body").empty();
+            $("#treemap-aside-body").css('max-height', height);
+
+
+            // set the content of the aside
+            if (data._children) {
+                data._children.forEach(function (d){
+                    var littleTitle = d.key || d.project_name;
+                    var asideItemBody = "";
+                    var displayItem = {};
+
+                    if (d.project_id) {
+
+                        displayItem = {
+                            ID : d.project_id,
+                            Name : d.project_name,
+                            Desc : d.project_description,
+                            "Planned Cost": formatNumber(d.planned_cost_dolr),
+                            "Actual/Projected Cost": formatNumber(d.projected_cost),
+                            "Cost Variance": formatNumber(d.cost_variance_dolr),
+                            "Start Date": d.start_date,
+                            "Planned Completion Date": d.actual_project_completion_date,
+                            "Projected/Actual Completion Date": d.actual_project_completion_date,
+                            "Schedule Variance": d.schedule_variance_days + " days"
+                        };
+
+                    } else {
+                        displayItem = {
+                            "Total Actual/Projected Cost": formatNumber(d.projected_cost),
+                            "Total Cost Variance": formatNumber(d.cost_variance_dolr)
+                        };
+                    }
+
+                    for (var key in displayItem) {
+                        asideItemBody +=
+                            "<p class='treemap-aside-item-body-item'>"
+                            + "<span class='treemap-aside-item-item-name'>" + key + "</span>" + " : " + "<span>"+ displayItem[key] + "<span>"
+                            + "</p>";
+                    }
+
+                    var childHtml =   "<a class='list-group-item'>"
+                        +   "<div class='treemap-aside-item-title'>"
+                        +       littleTitle
+                        +   "</div>"
+                        +   "<div class='treemap-aside-item-body'>" + asideItemBody +"</div>"
+                        + "</a>";
+
+                    var child = $(childHtml);
+                    child.click(function () {
+                        if (!d.project_id){
+                            transition(d);
+                        }
+                    });
+
+                    $("#treemap-aside-body").append(child);
+
+                });
+            }
+        }
+
         return g;
     }
     
-    function updateAside(data) {
-
-        // set the heading of aside
-        var heading = "";
-
-        if (data.key && data.projected_cost) {
-            heading = data.key + " " + formatNumber(data.projected_cost);
-        }
-
-        $("#treemap-aside-heading").html(heading);
-
-        // empty the aside body and set the height
-        $("#treemap-aside-body").empty();
-        $("#treemap-aside-body").css('max-height', height);
-
-
-        // set the content of the aside
-        if (data._children) {
-            var childrenHtml = "";
-            data._children.forEach(function (d){
-                var littleTitle = d.key || d.project_name;
-                var asideItemBody = "";
-                var displayItem = {};
-
-                if (d.project_id) {
-
-                    displayItem = {
-                        ID : d.project_id,
-                        Name : d.project_name,
-                        Desc : d.project_description,
-                        "Planned Cost": formatNumber(d.planned_cost_dolr),
-                        "Actual/Projected Cost": formatNumber(d.projected_cost),
-                        "Cost Variance": formatNumber(d.cost_variance_dolr),
-                        "Start Date": d.start_date,
-                        "Planned Completion Date": d.actual_project_completion_date,
-                        "Projected/Actual Completion Date": d.actual_project_completion_date,
-                        "Schedule Variance": d.schedule_variance_days + " days"
-                    };
-
-                } else {
-                    displayItem = {
-                        "Total Actual/Projected Cost": formatNumber(d.projected_cost),
-                        "Total Cost Variance": formatNumber(d.cost_variance_dolr)
-                    };
-                }
-
-                for (var key in displayItem) {
-                    asideItemBody +=
-                        "<p class='treemap-aside-item-body-item'>"
-                        + "<span class='treemap-aside-item-item-name'>" + key + "</span>" + " : " + "<span>"+ displayItem[key] + "<span>"
-                        + "</p>";
-                }
-
-                childrenHtml +=   "<a class='list-group-item'>"
-                                +   "<div class='treemap-aside-item-title'>"
-                                +       littleTitle
-                                +   "</div>"
-                                +   "<div class='treemap-aside-item-body'>" + asideItemBody +"</div>"
-                                + "</a>";
-            });
-
-            $("#treemap-aside-body").append(childrenHtml);
-        }
-    }
-
     // --------- help from https://github.com/eskriett/open-data-vis/blob/master/js/treemap.js -------------------------
 
     function text(text) {

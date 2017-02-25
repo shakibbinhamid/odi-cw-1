@@ -78,3 +78,11 @@ rect.parent {
 #treemap-container .axis text {
     stroke-width: 1px;
 }
+
+#treemap-aside-body {
+    overflow-y: scroll;
+}
+
+.treemap-aside-item-title {
+    font-size: 0.9em;
+}

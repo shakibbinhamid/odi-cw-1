@@ -146,6 +146,8 @@ function main(o, data) {
 
     function display(d) {
 
+        updateAside(d);
+
         // configure the navbar
         navBar
             .datum(d.parent)
@@ -222,6 +224,33 @@ function main(o, data) {
         }
 
         return g;
+    }
+    
+    function updateAside(data) {
+        var heading = "";
+        if (data.key && data.projected_cost) {
+            heading = data.key + " " + formatNumber(data.projected_cost);
+        }
+        $("#treemap-aside-heading").html(heading);
+        $("#treemap-aside-body").empty();
+        $("#treemap-aside-body").css('max-height', height);
+
+
+        if (data._children) {
+            var childrenHtml = "";
+            var littleTitle;
+            data._children.forEach(function (d){
+                littleTitle = d.key || d.project_name;
+
+                childrenHtml +=   "<a class='list-group-item'>"
+                                +   "<div class='treemap-aside-item-title'>"
+                                +       littleTitle
+                                +   "</div>"
+                                + "</a>";
+            });
+
+            $("#treemap-aside-body").append(childrenHtml);
+        }
     }
 
     // --------- help from https://github.com/eskriett/open-data-vis/blob/master/js/treemap.js -------------------------

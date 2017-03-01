@@ -15,12 +15,12 @@
     fill: rgba(0,0,0,0.1);
 }
 .parcoords rect.extent {
-    fill: rgba(255, 255, 255,0.5);
+    fill: orange;
 }
 .parcoords .axis line, .parcoords .axis path {
-    fill: gray;
+    fill: #6B6990;
     stroke-width:5px;
-    stroke: #00;
+    stroke: #CEBF8E;
     shape-rendering: crispEdges;
 }
 .parcoords canvas {
@@ -45,4 +45,8 @@
     text-shadow: none;
     font-weight: bold;
     fill: white;
+}
+
+#parcoord-1 {
+    background-color: transparent;
 }

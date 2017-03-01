@@ -149,31 +149,128 @@ function main() {
         _(data).each(function (d) {
             delete d['Business Case ID'];
             delete d['Agency Code'];
-            delete d['Project ID'];
             delete d['Cost Variance (%)'];
             delete d['Schedule Variance (%)'];
         });
 
         var color = function(d) { return colors[d["Agency Name"]]; };
 
-        pc_progressive = d3.parcoords()("#example-progressive")
+        var width = $('#parcoord-chart').width(),
+            height = 9/16*$('#parcoord-chart').width();
+
+        $('#parcoord-1').css('height', height + 'px');
+
+        pc_progressive = d3.parcoords()("#parcoord-1")
             .data(data)
             .color(color)
             .alpha(0.4)
-            .width($('#parcoord-chart').width())
-            .height(0.5*$('#parcoord-chart').width())
+            .width(width)
+            .height(height)
             .margin({ top: 24, left: 150, bottom: 12, right: 0 })
             .mode("queue")
             .render()
             .reorderable()
             .brushable()  // enable brushing
             .interactive();  // command line mode
+
+        // setting up grid
+        var column_keys = d3.keys(data[0]);
+        var columns = column_keys.map(function(key,i) {
+            return {
+                id: key,
+                name: key,
+                field: key,
+                sortable: true
+            }
+        });
+
+        var options = {
+            enableCellNavigation: true,
+            enableColumnReorder: false,
+            multiColumnSort: false
+        };
+
+        var dataView = new Slick.Data.DataView();
+        var grid = new Slick.Grid("#grid", dataView, columns, options);
+        var pager = new Slick.Controls.Pager(dataView, grid, $("#pager"));
+
+        // wire up model events to drive the grid
+        dataView.onRowCountChanged.subscribe(function (e, args) {
+            grid.updateRowCount();
+            grid.render();
+        });
+
+        dataView.onRowsChanged.subscribe(function (e, args) {
+            grid.invalidateRows(args.rows);
+            grid.render();
+        });
+
+        // column sorting
+        var sortcol = column_keys[0];
+        var sortdir = 1;
+
+        function comparer(a, b) {
+            var x = a[sortcol], y = b[sortcol];
+            return (x == y ? 0 : (x > y ? 1 : -1));
+        }
+
+        // click header to sort grid column
+        grid.onSort.subscribe(function (e, args) {
+            sortdir = args.sortAsc ? 1 : -1;
+            sortcol = args.sortCol.field;
+
+            if ($.browser.msie && $.browser.version <= 8) {
+                dataView.fastSort(sortcol, args.sortAsc);
+            } else {
+                dataView.sort(comparer, args.sortAsc);
+            }
+        });
+
+        // highlight row in chart
+        grid.onMouseEnter.subscribe(function(e,args) {
+            // Get row number from grid
+            var grid_row = grid.getCellFromEvent(e).row;
+
+            // Get the id of the item referenced in grid_row
+            var item_id = grid.getDataItem(grid_row).id;
+            var d = pc_progressive.brushed() || data;
+
+            // Get the element position of the id in the data object
+            elementPos = d.map(function(x) {return x.id; }).indexOf(item_id);
+
+            // Highlight that element in the parallel coordinates graph
+            pc_progressive.highlight([d[elementPos]]);
+        });
+
+        grid.onMouseLeave.subscribe(function(e,args) {
+            pc_progressive.unhighlight();
+        });
+
+        console.log(_data)
+
+
+        // fill grid with data
+        gridUpdate(data);
+
+        // update grid on brush
+        pc_progressive.on("brush", function(d) {
+            gridUpdate(d);
+        });
+
+        function gridUpdate(data) {
+            dataView.beginUpdate();
+            dataView.setItems(data, 'Project ID');
+            dataView.endUpdate();
+        };
+
+
     });
 }
 
 main();
 
+
 window.addEventListener("resize", function () {
-    $("#example-progressive").empty();
+    $("#parcoord-1").empty();
     main();
 });

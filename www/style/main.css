@@ -132,3 +132,16 @@ rect.parent {
     text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
     cursor: move;
 }
+
+#grid {
+    bottom: 0;
+    height: 300px;
+}
+/*#pager {*/
+    /*bottom: 306px;*/
+    /*height: 20px;*/
+/*}*/
+.slick-row:hover {
+    font-weight: bold;
+    color: #069;
+}

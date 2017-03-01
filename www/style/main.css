@@ -104,10 +104,6 @@ rect.parent {
 
 /**/
 
-#parcoord-chart{
-    background: white;
-}
-
 .background path {
     fill: none;
     stroke: #ddd;

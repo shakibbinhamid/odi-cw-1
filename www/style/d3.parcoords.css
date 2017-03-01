@@ -1,5 +1,5 @@
 .parcoords > svg, .parcoords > canvas {
-    font: 20px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 0.7em;
     position: absolute;
 }
 .parcoords > canvas {
@@ -9,14 +9,13 @@
     fill: transparent;
 }
 .parcoords rect.background:hover {
-    fill: rgba(120,120,120,0.2);
+    fill: rgba(255, 255, 255,0.2);
 }
 .parcoords .resize rect {
     fill: rgba(0,0,0,0.1);
 }
 .parcoords rect.extent {
-    fill: rgba(255,255,255,0.25);
-    stroke: rgba(0,0,0,0.6);
+    fill: rgba(255, 255, 255,0.5);
 }
 .parcoords .axis line, .parcoords .axis path {
     fill: gray;
@@ -40,4 +39,10 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.axis text {
+    text-shadow: none;
+    font-weight: bold;
+    fill: white;
 }

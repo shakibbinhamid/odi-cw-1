@@ -9,9 +9,12 @@
     <link href="style/main.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="lib/underscore.js"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="lib/d3.parcoords.js"></script>
     <script src="https://use.fontawesome.com/d0bdb715ea.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="style/d3.parcoords.css">
 </head>
 <body>
 
@@ -47,16 +50,50 @@
 <br/>
 <br/>
 
-<div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-6" id="parcoord-chart">
-        <div id="parcoord" style="font-size: 0.7em;"></div>
-    </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-3">
-    </div>
-</div>
-<script src="js/vis-2.js"></script>
+<!--<div class="row">-->
+    <!--<div class="col-lg-1"></div>-->
+    <!--<div class="col-lg-6" id="parcoord-chart">-->
+        <!--<div id="parcoord" style="font-size: 0.7em;"></div>-->
+    <!--</div>-->
+    <!--<div class="col-lg-1"></div>-->
+    <!--<div class="col-lg-3">-->
+    <!--</div>-->
+<!--</div>-->
+<!--<script src="js/vis-2.js"></script>-->
+
+<div id="example-progressive" class="parcoords" style="width:1300px;margin-left:-250px;height:270px;"></div>
+
+<script id="progressive">// linear color scale
+// interact with this variable from a javascript console
+var pc_progressive;
+
+// load csv file and create the chart
+d3.csv('data/odi-cw-1.csv', function(data) {
+    var colorgen = d3.scale.category20();
+    var colors = {};
+    _(data).chain()
+        .pluck('group')
+        .uniq()
+        .each(function(d,i) {
+            colors[d] = colorgen(i);
+        });
+
+    var color = function(d) { return colors[d.group]; };
+
+    pc_progressive = d3.parcoords()("#example-progressive")
+        .data(data)
+        .color(color)
+        .alpha(0.4)
+        .margin({ top: 24, left: 150, bottom: 12, right: 0 })
+        .mode("queue")
+        .render()
+        .brushable()  // enable brushing
+        .interactive()  // command line mode
+
+    pc_progressive.svg.selectAll("text")
+//        .style("font", "10px sans-serif");
+});
+</script>
 
 </body>
 </html>

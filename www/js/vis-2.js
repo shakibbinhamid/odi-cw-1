@@ -29,6 +29,8 @@ d3.csv("data/cars.csv", function(error, cars) {
                 .range([height, 0]));
     }));
 
+    console.log(dimensions)
+
     // Add grey background lines for context.
     background = svg.append("g")
         .attr("class", "background")

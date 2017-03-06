@@ -133,15 +133,10 @@ rect.parent {
     cursor: move;
 }
 
-#grid {
-    bottom: 0;
-    height: 300px;
+.jsgrid-grid-header{
+    color: orangered;
 }
-/*#pager {*/
-    /*bottom: 306px;*/
-    /*height: 20px;*/
-/*}*/
-.slick-row:hover {
-    font-weight: bold;
-    color: #069;
+
+.jsgrid-grid-body{
+    color: rebeccapurple;
 }

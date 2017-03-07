@@ -56,7 +56,7 @@
 <br/>
 
 <div class="row">
-    <div class="col-lg-2" style="padding-left: 1%">
+    <div class="col-lg-2" style="padding-left: 1%; padding-right:0">
         <h3>Description</h3>
         <p>
             This interactive visualisation is showing the projects of 26 US Government Agencies. On the top
@@ -76,13 +76,15 @@
         <h3>Questions to Answer</h3>
         <p>Brushing over Cost Variance allows us to see that Project 1770 from DoA has a 65 percent cost variance at $688.454</p>
         <p>It is also clear that most projects' Schedule Variance was just over a year (in either way)</p>
+        <p>Brushing over Projected cost also tells us that DoA's Project 1657 is the most expensive project at $1.947B</p>
+        <p>Sorting the grid on Lifecycle Cost tells us that Department of State's Project 2998 costs $9.097B to keep alive</p>
     </div>
     <div class="col-lg-8" id="parcoord-chart">
         <br/>
         <div id="parcoord" class="parcoords"></div>
         <div id="jsGrid"></div>
     </div>
-    <div class="col-lg-2" >
+    <div class="col-lg-2" style="padding-left: 0">
         <h3>Controls</h3>
         <p>
             Drag and create rectangles on any number of axis (brushing) to select the data corresponding
@@ -106,7 +108,8 @@
 
         <h3>Intended Audience</h3>
         <p>
-            The citizens of USA.
+            The citizens of USA. They can use this visualisation to explore the dataset effectively, as well as get an
+            overview at a project level to find patterns in the projects' cost and schedule.
         </p>
     </div>
 </div>

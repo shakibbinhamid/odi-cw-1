@@ -50,16 +50,74 @@
 <br/>
 
     <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-6" id="treemap-chart">
+        <div class="col-lg-2" style="padding-left: 1%; padding-right: 0">
+            <h3>Description</h3>
+            <p>
+                This visualisation is a treemap and heatmap of projects of 26 US Government Agencies.
+                Agencies have investments and investments have projects.
+            </p>
+            <p>
+                The heatmap is coloured based on the Cost Variance ($M) of the projects. Projects that
+                saved or is projected to save more money than originally planned is greener and inversely
+                projects that actually cost more are redder in the heatmap.
+            </p>
+            <p>
+                The treemap groups the projects into investments and, in turn, the investments into
+                agencies. So, in the treemap, we can zoom into any agency to find its investments and
+                then zoom into the investments to find the projects. At the same time, the aside panel
+                will have detailed information about each cell of the treemap, be it a department, investment
+                or a project. The ordering of the treemap is done by sorting on the projected/actual cost ($M)
+            </p>
+
+            <h3>Intended Audience</h3>
+            <p>
+                The citizens of USA. They can use this visualisation to view the US Agencies'
+                spending on projects at a department and investment level. This also allows
+                rich exploration of the underlying data in a hierarchical structure.
+            </p>
+
+        </div>
+        <div class="col-lg-6" id="treemap-chart" style="padding-top: 1.5%;">
             <div id="treemap" style="font-size: 0.7em;"></div>
         </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-3">
+        <div class="col-lg-2" style="padding-top: 1.5%;">
             <div class="panel panel-default" id="treemap-aside">
                 <div class="panel-heading" id="treemap-aside-heading"></div>
                 <ul class="list-group" id="treemap-aside-body"></ul>
             </div>
+        </div>
+        <div class="col-lg-2" style="padding-left: 0;">
+            <h3>Controls</h3>
+            <p>
+                Click on any cell on the treemap to zoom in that section
+            </p>
+            <p>
+                Click on the yellow bar to un-zoom back to previous section
+            </p>
+            <p>
+                Scroll on the aside panel to get information about the cells in the treemap
+            </p>
+            <p>
+                Click on the aside panel items to view them on the treemap
+            </p>
+            <p>
+                The gradient legend is indication of the cell's Cost Variance ($M)
+            </p>
+
+            <h3>Questions to Answer</h3>
+            <p>
+                Using this visualisation, we can immediately see that Department of Labor's total
+                Cost Variance ($M) was the most out of all 26 agencies
+            </p>
+            <p>
+                At the same time, Department of Agriculture had the least Cost Variance ($M)
+            </p>
+            <p>
+                We can also explore and find from the ordering of the treemap cells that National
+                Archives and Records Administration spent only $21.24M in total, the least of all
+                agencies.
+            </p>
+
         </div>
     </div>
 

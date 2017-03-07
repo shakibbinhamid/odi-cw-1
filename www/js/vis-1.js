@@ -27,7 +27,7 @@ function main(o, data) {
 
     // specify the margins
     var width = $('#treemap').width() - margin.left - margin.right,
-        height = 9/16*$('#treemap').width() - margin.top - margin.bottom,
+        height = 12/16*$('#treemap').width() - margin.top - margin.bottom,
         transitioning;
 
 	$('#treemap-chart').css('height', (height + 100) + 'px')

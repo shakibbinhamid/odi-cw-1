@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8f0378b-0a0b-4fa9-8ab8-e7bf234f3c2d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/cleaning.html" afterPath="$PROJECT_DIR$/www/cleaning.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/parcoords.html" afterPath="$PROJECT_DIR$/www/parcoords.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/treemap.html" afterPath="$PROJECT_DIR$/www/treemap.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,11 +18,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="parcoords.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="parcoords.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/parcoords.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="53" column="10" lean-forward="true" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+            <state relative-caret-position="324">
+              <caret line="42" column="64" lean-forward="true" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -33,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cleaning.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cleaning.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/cleaning.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="27" column="34" lean-forward="false" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            <state relative-caret-position="312">
+              <caret line="147" column="38" lean-forward="false" selection-start-line="147" selection-start-column="38" selection-end-line="147" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -154,9 +152,9 @@
         <option value="$PROJECT_DIR$/www/visualisation-1.html" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/www/cleaning.html" />
         <option value="$PROJECT_DIR$/www/treemap.html" />
         <option value="$PROJECT_DIR$/www/parcoords.html" />
+        <option value="$PROJECT_DIR$/www/cleaning.html" />
       </list>
     </option>
   </component>
@@ -736,12 +734,12 @@
       <workItem from="1488820658794" duration="6750000" />
       <workItem from="1488878199577" duration="1730000" />
       <workItem from="1488884355699" duration="2771000" />
-      <workItem from="1488895463587" duration="6033000" />
+      <workItem from="1488895463587" duration="6328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99708000" />
+    <option name="totallyTimeSpent" value="100003000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="1" width="1115" height="1054" extended-state="0" />
@@ -1098,14 +1096,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/cleaning.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="27" column="34" lean-forward="false" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/treemap.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -1121,12 +1111,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/parcoords.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="53" column="10" lean-forward="true" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+        <state relative-caret-position="324">
+          <caret line="42" column="64" lean-forward="true" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/cleaning.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="147" column="38" lean-forward="false" selection-start-line="147" selection-start-column="38" selection-end-line="147" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>

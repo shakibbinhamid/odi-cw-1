@@ -23,7 +23,7 @@ function main() {
         var color = function(d) { return colors[d["Agency Name"]]; };
 
         var width = $('#parcoord-chart').width(),
-            height = 7/16*$('#parcoord-chart').width();
+            height = 6.3/16*$('#parcoord-chart').width();
 
         $('#parcoord').css('height', height + 'px');
         $('.jsgrid-grid-body').css('height', height + 'px');
@@ -61,7 +61,7 @@ function main() {
         function updateGrid(d) {
             $("#jsGrid").jsGrid({
                 width: "100%",
-                height: "400px",
+                height: "370px",
 
                 inserting: false,
                 editing: false,

@@ -56,12 +56,59 @@
 <br/>
 
 <div class="row">
-    <div class="col-lg-2"></div>
+    <div class="col-lg-2" style="padding-left: 1%">
+        <h3>Description</h3>
+        <p>
+            This interactive visualisation is showing the projects of 26 US Government Agencies. On the top
+            you can see the projects' Lifecycle Cost ($M), Planned Cost ($M), Projected /Actual
+            Cost ($M), Cost Variance ($M) and Schedule Variance (days) in parallel coordinates.
+            Each of the projects is a polyline across the different axis. They are grouped by colour
+            according to the agency name.
+        </p>
+
+        <p>
+            You can select portions of the data by dragging a rectangle or brushing over the axis.
+            You will see the table below updating with data related to only your selection. Hovering
+            over the table rows will highlight the paths on the graph on top. You can also sort the
+            table based on the column values.
+        </p>
+
+        <h3>Questions to Answer</h3>
+        <p>Brushing over Cost Variance allows us to see that Project 1770 from DoA has a 65 percent cost variance at $688.454</p>
+        <p>It is also clear that most projects' Schedule Variance was just over a year (in either way)</p>
+    </div>
     <div class="col-lg-8" id="parcoord-chart">
+        <br/>
         <div id="parcoord" class="parcoords"></div>
         <div id="jsGrid"></div>
     </div>
-    <div class="col-lg-2"></div>
+    <div class="col-lg-2" >
+        <h3>Controls</h3>
+        <p>
+            Drag and create rectangles on any number of axis (brushing) to select the data corresponding
+            to that portion. Click on the same axis to remove selection
+        </p>
+        <p>
+            Drag the axis labels to drag the axis themselves.
+        </p>
+        <p>
+            Rows of the table will update based on your selection of the data on the top graph.
+        </p>
+        <p>
+            Hover over the rows to highlight the corresponding path.
+        </p>
+        <p>
+            Sort the table based on column values by clicking the column headers.
+        </p>
+        <p>
+            Go to different pages of the table by clicking page numbers.
+        </p>
+
+        <h3>Intended Audience</h3>
+        <p>
+            The citizens of USA.
+        </p>
+    </div>
 </div>
 
 <script src="js/vis-2.js"></script>

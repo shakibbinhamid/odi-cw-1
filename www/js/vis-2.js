@@ -73,7 +73,7 @@ function main() {
                 fields: [
                     { name: "Agency Name", type: "text", width: 75 },
 
-                    { name: "Project ID", type: "text", width: 50 },
+                    { name: "Project ID", type: "text", width: 40 },
                     { name: "Project Name", type: "text", width: 75 },
                     { name: "Project Description", type: "text", width: 150 },
 
@@ -93,8 +93,6 @@ function main() {
                 ]
             });
         }
-
-
     });
 }
 

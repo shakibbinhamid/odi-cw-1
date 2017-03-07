@@ -9,5 +9,5 @@ app.use(express.static(__dirname + '/www'));
 app.set('port', (process.env.PORT || 5000));
 
 app.listen(app.get('port'), function () {
-    console.log('Example app listening on port 3000!')
+    console.log('Example app listening on port ' + (process.env.PORT || 5000))
 });

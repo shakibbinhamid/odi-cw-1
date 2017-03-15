@@ -1,0 +1,73 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\begin{document}
+
+\begin{center}
+\Large{
+COMP6214 Coursework 1 Using D3.js\\
+\url{https://comp6214.herokuapp.com}
+}
+\\
+Shakib-Bin Hamid\\ID: 25250094, Email: sh3g12@soton.ac.uk
+
+\end{center}
+
+\section{Data Cleaning}
+
+\begin{description}
+\item[Found at ] \url{https://comp6214.herokuapp.com/cleaning}
+\item[On Local Machine] Open \texttt{www/data/odi-cw-1.openrefine.tar.gz} in OpenRefine
+\item[Error Correction \& Data Modification] On the same webpage.
+\item[Used] OpenRefine\cite{openrefineteam} and MS Excel.
+\end{description}
+
+\section{Visualisation 1: Parallel Co-ordinates}
+
+\begin{description}
+\item[Found at ] \url{https://comp6214.herokuapp.com/parcoords}
+\item[On Local Machine] Open \texttt{www/parcoords.html} file in a browser
+\item[Description, Interactivity and Intented Audience] On the same webpage.
+\item[Inspired By] \cite{kaichang}
+\end{description}
+
+\section{Visualisation 1: Treemap \& Heatmap}
+
+\begin{description}
+\item[Found at ] \url{https://comp6214.herokuapp.com/treemap}
+\item[On Local Machine] Open \texttt{www/treemap.html} file in a browser
+\item[Description, Interactivity and Intented Audience] On the same webpage.
+\item[Inspired By] \cite{mikebostock}
+\end{description}
+
+\section{Steps of Hosting}
+
+\subsection{On Local Computer}
+Make sure to have NodeJS installed. Download the repository. In the repository open a terminal and enter \texttt{
+npm install}, followed by \texttt{node index.js}. Go to \url{http://localhost:5000} to see the app.
+
+\subsection{On Heroku}
+Detailed steps can be found in \cite{heroku}. In short - install Heroku Toolbelt and log in your Heroku account from a terminal. On Heroku add a NodeJS app and add the app's git address as a remote to the code repository. Then push to the Heroku master branch.
+
+\medskip
+
+\bibliographystyle{unsrt}%Used BibTeX style is unsrt
+\bibliography{refs}
+
+\end{document}

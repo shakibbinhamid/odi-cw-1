@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+
+\bibitem{openrefineteam}
+OpenRefine Team.
+\newblock Openrefine.
+\newblock \url{http://openrefine.org/}.
+\newblock Last Accessed: 15 March 2017.
+
+\bibitem{kaichang}
+Kai Chang.
+\newblock {Parallel Coordinates}.
+\newblock \url{https://syntagmatic.github.io/parallel-coordinates/}.
+\newblock Last Accessed: 15 March 2017.
+
+\bibitem{mikebostock}
+Mike Bostock.
+\newblock {Zoomable Treemaps}.
+\newblock \url{https://bost.ocks.org/mike/treemap/}.
+\newblock Last Accessed: 15 March 2017.
+
+\bibitem{heroku}
+Heroku.
+\newblock Getting started on heroku with node.js.
+\newblock
+  \url{https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction}.
+\newblock Last Accessed: 15 March 2017.
+
+\end{thebibliography}
